@@ -1,0 +1,26 @@
+# ===== STAGE 1: BUILD ANGULAR =====
+FROM node:20 AS build
+
+WORKDIR /app
+
+# Copia package.json e installa dipendenze
+COPY package*.json ./
+RUN npm install
+
+# Copia tutto il progetto
+COPY . .
+
+# Build produzione Angular
+RUN npm run build --prod
+
+
+# ===== STAGE 2: NGINX SERVER =====
+FROM nginx:alpine
+
+# Copia build Angular dentro nginx
+COPY --from=build /app/dist/ /usr/share/nginx/html
+
+# Espone porta 80
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
