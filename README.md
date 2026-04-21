@@ -12,7 +12,7 @@
 Eseguire il seguente comando
 
 ```shell
-docker build -t webapp-backend:latest -f Dockerfile.frontend.backend .
+docker build -t webapp-backend:latest -f Dockerfile.backend .
 ```
 
 
