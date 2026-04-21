@@ -15,6 +15,11 @@ Eseguire il seguente comando
 docker build -t webapp-backend:latest -f Dockerfile.frontend.backend .
 ```
 
+
+```shell
+docker build -t webapp-frontend:latest -f Dockerfile.frontend .
+```
+
 # Come avviare l'applicazione attraverso docker
 Eseguire il seguente comando
 
@@ -22,19 +27,8 @@ Eseguire il seguente comando
 docker run -it --rm -p 3000:8080 webapp-backend:latest
 ```
 
-# Scarica Node.js come Docker image:
 ```shell
-docker pull node:24-slim
+docker run -it --rm -p 8081:80 webapp-frontend:latest
 ```
-# Crea un Node.js container e avvia una sessione shell:
-```shell
-docker run -it --rm --entrypoint sh node:24-slim
-```
-# Verifica Node.js version:
-```shell
-node -v # Should print "v24.15.0".
-```
-# Verifica npm version:
-```shell
-npm -v # Should print "11.12.1".
-```
+
+
