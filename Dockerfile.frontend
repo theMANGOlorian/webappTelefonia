@@ -1,14 +1,17 @@
 # ===== STAGE 1: BUILD ANGULAR =====
-FROM node:20 AS build
+FROM node:24.15.0 AS frontend-compiler
 
 WORKDIR /app
 
 # Copia package.json e installa dipendenze
-COPY package*.json ./
+COPY webui/package*.json ./
 RUN npm install
 
 # Copia tutto il progetto
-COPY . .
+COPY ./webui ./webui
+
+# Cambio directory di lavoro in webui
+WORKDIR /app/webui
 
 # Build produzione Angular
 RUN npm run build --prod
@@ -18,7 +21,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copia build Angular dentro nginx
-COPY --from=build /app/dist/ /usr/share/nginx/html
+COPY --from=frontend-compiler /app/webui/dist/webapp-angular/browser /usr/share/nginx/html
 
 # Espone porta 80
 EXPOSE 80
