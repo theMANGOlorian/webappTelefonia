@@ -8,7 +8,14 @@
 ./mvnw spring-boot:run
 ```
 
-# Come costruire il container docker
+# Come costruire l'intera webapp
+Eseguire il comando nella cartella root
+
+```shell
+docker-compose up -d --build
+```
+
+# Come costruire il container docker separatamente
 Eseguire il seguente comando
 
 ```shell
@@ -20,7 +27,7 @@ docker build -t webapp-backend:latest -f Dockerfile.backend .
 docker build -t webapp-frontend:latest -f Dockerfile.frontend .
 ```
 
-# Come avviare l'applicazione attraverso docker
+# Come avviare i container docker separatamente
 Eseguire il seguente comando
 
 ```shell
