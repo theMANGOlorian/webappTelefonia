@@ -32,6 +32,6 @@ docker run -it --rm -p 8081:80 webapp-frontend:latest
 ```
 
 ```shell
-docker run --name webapp-database -e POSTGRES_USER=MatDen -e POSTGRES_PASSWORD=MatDen0302! -e POSTGRES_DB=webapp-db -p 5432:5432 -v postgres_data:/var/lib/postgresql/data -d postgres
+docker run --name webapp-database -e POSTGRES_USER=MatDen -e POSTGRES_PASSWORD=MatDen0302! -e POSTGRES_DB=webapp-db -p 5432:5432 -v postgres_data:/var/lib/postgresql -d postgres
 
 ```
