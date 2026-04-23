@@ -1,4 +1,4 @@
-// features/auth/login/login.component.ts
+// features/auth/register/register.component.ts
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
@@ -7,11 +7,12 @@ import { AuthService } from '../../../core/services/auth.service';
   selector: 'app-register',
   imports: [FormsModule],
   standalone: true,
-  templateUrl: './login.register.html'
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent {
     email = '';
     password = '';
+    username = '';
 
     constructor(private auth: AuthService) {}
 
