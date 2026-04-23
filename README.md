@@ -8,33 +8,37 @@
 ./mvnw spring-boot:run
 ```
 
-# Come costruire il container docker
+# Come costruire l'intera webapp
+Eseguire il comando nella cartella root
+
+```shell
+docker-compose up -d --build
+```
+
+# Come costruire il container docker separatamente
 Eseguire il seguente comando
 
 ```shell
-docker build -t webapp-backend:latest -f Dockerfile.frontend.backend .
+docker build -t webapp-backend:latest -f Dockerfile.backend .
 ```
 
-# Come avviare l'applicazione attraverso docker
+
+```shell
+docker build -t webapp-frontend:latest -f Dockerfile.frontend .
+```
+
+# Come avviare i container docker separatamente
 Eseguire il seguente comando
 
 ```shell
 docker run -it --rm -p 3000:8080 webapp-backend:latest
 ```
 
-# Scarica Node.js come Docker image:
 ```shell
-docker pull node:24-slim
+docker run -it --rm -p 8081:80 webapp-frontend:latest
 ```
-# Crea un Node.js container e avvia una sessione shell:
+
 ```shell
-docker run -it --rm --entrypoint sh node:24-slim
-```
-# Verifica Node.js version:
-```shell
-node -v # Should print "v24.15.0".
-```
-# Verifica npm version:
-```shell
-npm -v # Should print "11.12.1".
+docker run --name webapp-database -e POSTGRES_USER=MatDen -e POSTGRES_PASSWORD=MatDen0302! -e POSTGRES_DB=webapp-db -p 5432:5432 -v postgres_data:/var/lib/postgresql -d postgres
+
 ```
