@@ -1,6 +1,48 @@
-<form (ngSubmit)="onSubmit()">
-  <input [(ngModel)]="email" name="email" placeholder="Email">
-    <input [(ngModel)]="username" name="username" type="username" placeholder="Username">
-  <input [(ngModel)]="password" name="password" type="password" placeholder="Password">
-  <button type="submit">Register</button>
-</form>
+<div class="auth-container">
+  <form (ngSubmit)="onSubmit()" class="auth-form">
+
+    <h2>Crea un account</h2>
+    <p>Registrati per iniziare</p>
+
+    <div class="form-group">
+      <input [(ngModel)]="email" name="email" placeholder="Email" />
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="username" name="username" placeholder="Username" />
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="nome" name="nome" placeholder="Nome" />
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="cognome" name="cognome" placeholder="Cognome" />
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="password" name="password" type="password" placeholder="Password" />
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="confirmPassword" name="confirmPassword" type="password" placeholder="Ripeti password" />
+    </div>
+
+    <!-- SWITCH -->
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" (change)="isAzienda = !isAzienda"/>
+        <span class="slider"></span>
+      </label>
+      <span>Sono un'azienda</span>
+    </div>
+
+    <!-- PARTITA IVA (CONDIZIONALE) -->
+    <div class="form-group" *ngIf="isAzienda">
+      <input [(ngModel)]="piva" name="piva" placeholder="Partita IVA" />
+    </div>
+
+    <button type="submit" name="submit" >Register</button>
+
+  </form>
+</div>
