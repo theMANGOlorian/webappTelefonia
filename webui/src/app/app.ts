@@ -1,9 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
+import { ErrorBoxComponent } from './dialog-box/error-box/error-box.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, ErrorBoxComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
