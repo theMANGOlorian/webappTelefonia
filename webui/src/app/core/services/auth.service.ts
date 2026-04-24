@@ -1,7 +1,7 @@
 // core/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { tap, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -18,6 +18,9 @@ export class AuthService {
   }
 
   register(data: any) {
+    if (data.password !== data.confirmPassword) {
+      return throwError(() => new Error("Passwords do not match"));
+    }
     return this.http.post(`${this.API}/users`, data);
   }
 
