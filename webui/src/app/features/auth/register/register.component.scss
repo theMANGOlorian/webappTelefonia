@@ -146,11 +146,12 @@
 
     input:checked + .slider::before {
       transform: translateX(18px);
+      background: #4f46e5;
     }
   }
 }
 
-/* ✨ animazione ingresso */
+/* animazione ingresso */
 @keyframes fadeIn {
   from {
     opacity: 0;
