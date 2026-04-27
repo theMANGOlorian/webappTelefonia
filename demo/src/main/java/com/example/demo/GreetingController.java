@@ -16,6 +16,6 @@ public class GreetingController {
 
     String message = (name == null || name.isBlank()) ? "Hello!" : template.formatted(name); 
 
-    return new Greeting(message);
+    return new Greeting(message); // HTTP Response 
   }
 }

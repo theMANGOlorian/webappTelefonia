@@ -19,7 +19,7 @@ import { ErrorService } from '../../core/services/error.service';
       transform: translate(-50%, -30px);
       opacity: 0;
 
-      background: #e74c3c;
+      background: #ef2009ce;
       color: white;
       padding: 40px 100px;
       border-radius: 8px;
