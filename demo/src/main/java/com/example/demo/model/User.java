@@ -1,13 +1,11 @@
-package com.example.demo;
-import java.util.Optional;
+package com.example.demo.model;
 
 public record User(
     String username, 
     String nome, 
     String cognome,
     String password,
-    String confirmPassword,
-    Optional<String>piva,
+    String piva,
     boolean isAzienda,
     String email
     ) { }
