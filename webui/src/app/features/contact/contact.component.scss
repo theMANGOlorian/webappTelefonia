@@ -1,72 +1,90 @@
 .contact-container {
-  padding: 2rem;
-  background: #f5f7fb;
+  padding: 40px;
+  background: #f8fafc;
   min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
 
   h1 {
-    margin-bottom: 1.5rem;
     font-size: 2rem;
-    color: #1e293b;
+    margin-bottom: 30px;
+    color: #4f46e5;
   }
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+
+  animation: fadeIn 0.5s ease;
 }
 
 .contact-card {
   background: #ffffff;
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transition: all 0.25s ease;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  /* glow leggero */
+  &::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(79, 70, 229, 0.08);
+    filter: blur(80px);
+    top: -50px;
+    right: -50px;
+  }
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 35px rgba(79, 70, 229, 0.15);
   }
 
   h2 {
-    margin-bottom: 1rem;
-    color: #0f172a;
-    font-size: 1.3rem;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    color: #4338ca;
   }
 
   p {
-    margin: 0.4rem 0;
-    color: #475569;
+    margin: 6px 0;
+    color: #555;
     font-size: 0.95rem;
 
     strong {
-      color: #1e293b;
+      color: #4f46e5;
     }
   }
 }
 
+/* form */
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 
   label {
-    margin-bottom: 0.3rem;
+    margin-bottom: 4px;
     font-size: 0.85rem;
-    color: #64748b;
+    color: #666;
   }
 
   input,
   textarea {
-    padding: 0.6rem 0.7rem;
-    border-radius: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
     border: 1px solid #e2e8f0;
-    outline: none;
-    transition: all 0.2s ease;
     font-size: 0.9rem;
+    transition: all 0.25s ease;
+    background: #f9fafb;
 
     &:focus {
-      border-color: #6366f1;
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      border-color: #4f46e5;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+      outline: none;
     }
   }
 
@@ -75,24 +93,67 @@
   }
 }
 
+/* bottone stile navbar */
 button {
-  margin-top: 0.5rem;
   width: 100%;
-  padding: 0.7rem;
+  padding: 10px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
-  color: #fff;
-  font-weight: 600;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
+  }
+}
+
+/* badge telefonia */
+.line-info {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .status {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+
+    &.active {
+      background: rgba(34, 197, 94, 0.1);
+      color: #16a34a;
+    }
+
+    &.inactive {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+    }
+  }
+
+  .type {
+    font-size: 0.8rem;
+    color: #6366f1;
+    font-weight: 500;
+  }
+}
+
+/* animazione entrata */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

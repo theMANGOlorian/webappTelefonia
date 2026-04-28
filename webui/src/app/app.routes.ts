@@ -6,6 +6,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './features/home/home.component';
 import { ContactComponent } from './features/contact/contact.component';
+import { FaqComponent } from './features/faq/faq.component';
 
 
 export const routes: Routes = [
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'faq', component: FaqComponent },
   { path: '**', component: NotFoundComponent }
 ];
