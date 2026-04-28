@@ -49,12 +49,17 @@ BEGIN
 END IF;
 END$$;
 
+-- =========================
+-- EXTENSIONS
+-- =========================
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- =========================
 -- TABLE USERS
 -- =========================
 CREATE TABLE IF NOT EXISTS users (
-    id_user SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     username alfnum_255 NOT NULL UNIQUE,
     email emailstr NOT NULL UNIQUE,
     name alfnum_255 NOT NULL,
