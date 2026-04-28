@@ -7,6 +7,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './features/home/home.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { FaqComponent } from './features/faq/faq.component';
+import { TermsComponent} from './features/terms/terms.component';
+import { PrivacyComponent} from './features/privacy/privacy.component';
 
 
 export const routes: Routes = [
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'terms', component: TermsComponent },
+  { path: 'privacy', component: PrivacyComponent },
   { path: '**', component: NotFoundComponent }
 ];
