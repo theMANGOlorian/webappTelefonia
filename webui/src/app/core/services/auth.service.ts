@@ -23,7 +23,9 @@ export class AuthService {
       this.errorService.show("Passwords do not match");
       return throwError(() => new Error("Passwords do not match"));
     }
-    
+    if (data.piva === "") {
+      data.piva = null;
+    }
     return this.http.post(`${this.API}/users`, data);
   }
 
