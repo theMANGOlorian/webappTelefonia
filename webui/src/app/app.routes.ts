@@ -9,7 +9,7 @@ import { ContactComponent } from './features/contact/contact.component';
 import { FaqComponent } from './features/faq/faq.component';
 import { TermsComponent} from './features/terms/terms.component';
 import { PrivacyComponent} from './features/privacy/privacy.component';
-
+import { UserComponent } from './features/user/user.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,5 +19,6 @@ export const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'privacy', component: PrivacyComponent },
+  { path: 'user/:id', component: UserComponent },
   { path: '**', component: NotFoundComponent }
 ];
