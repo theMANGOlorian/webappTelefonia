@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -21,20 +22,31 @@ export class RegisterComponent {
     isAzienda = false;
     confirmPassword = '';
 
-    constructor(private auth: AuthService) {}
+    constructor(private auth: AuthService, private router: Router) {}
 
     onSubmit() {
         this.auth.register({
             email: this.email,
-            password: this.password,
-            confirmPassword: this.confirmPassword,
             username: this.username,
             nome: this.nome,
             cognome: this.cognome,
-            piva: this.piva,
+            confirmPassword: this.confirmPassword,
+            password: this.password,
             isAzienda: this.isAzienda,
-        }).subscribe(() => {
-            console.log('Registrazione ok');
+            piva: this.piva,
+        }).subscribe({
+          next: (res: any) => {
+            console.log('Registrazione OK', res);
+
+            this.router.navigate(['/user', res.id]);
+          },
+          error: (err) => {
+            console.error('Errore registrazione', err);
+
+            if (err.status === 409) {
+              alert('Utente già esistente');
+            }
+          }
         });
     }
 }

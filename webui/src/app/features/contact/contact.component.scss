@@ -1,0 +1,159 @@
+.contact-container {
+  padding: 40px;
+  background: #f8fafc;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #4f46e5;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+
+  animation: fadeIn 0.5s ease;
+}
+
+.contact-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  /* glow leggero */
+  &::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(79, 70, 229, 0.08);
+    filter: blur(80px);
+    top: -50px;
+    right: -50px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(79, 70, 229, 0.15);
+  }
+
+  h2 {
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    color: #4338ca;
+  }
+
+  p {
+    margin: 6px 0;
+    color: #555;
+    font-size: 0.95rem;
+
+    strong {
+      color: #4f46e5;
+    }
+  }
+}
+
+/* form */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+
+  label {
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  input,
+  textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    background: #f9fafb;
+
+    &:focus {
+      border-color: #4f46e5;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+      outline: none;
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+}
+
+/* bottone stile navbar */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* badge telefonia */
+.line-info {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .status {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+
+    &.active {
+      background: rgba(34, 197, 94, 0.1);
+      color: #16a34a;
+    }
+
+    &.inactive {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+    }
+  }
+
+  .type {
+    font-size: 0.8rem;
+    color: #6366f1;
+    font-weight: 500;
+  }
+}
+
+/* animazione entrata */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,11 +1,52 @@
-<nav class="navbar">
-  <div class="logo">LOGO</div>
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="logo">
+    <img src="Logo_whithout_bg.png" alt="Logo" />
+  </div>
 
   <div class="links">
-    <a routerLink="/">Home</a>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a routerLink="/register" routerLinkActive="active">Register</a>
   </div>
 </nav>
 
-<router-outlet />
+<app-error-box></app-error-box>
+<router-outlet></router-outlet>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Logo + descrizione -->
+    <div class="footer-brand">
+      <h2>MyApp</h2>
+      <p>La tua piattaforma moderna per gestire tutto in modo semplice e veloce.</p>
+    </div>
+
+    <!-- Link -->
+    <div class="footer-links">
+      <div>
+        <h4>App</h4>
+        <a routerLink="/">Home</a>
+        <a routerLink="/login">Login</a>
+        <a routerLink="/register">Register</a>
+      </div>
+
+      <div>
+        <h4>Supporto</h4>
+        <a routerLink="/contact">Contatti</a>
+        <a routerLink="/privacy">Privacy</a>
+      </div>
+
+      <div>
+        <h4>Altro</h4>
+        <a routerLink="/terms">Termini</a>
+        <a routerLink="/faq">FAQ</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2026 MyApp. All rights reserved.</p>
+  </div>
+</footer>

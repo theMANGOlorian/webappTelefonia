@@ -1,0 +1,33 @@
+<div class="faq-page">
+
+  <!-- background -->
+  <div class="bg-blobs">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="faq-container">
+    <h1>FAQ</h1>
+    <p class="subtitle">Domande frequenti sul gestionale</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.active]="activeIndex === i">
+
+        <div class="faq-question" (click)="toggle(i)">
+          <span>{{ faq.question }}</span>
+          <div class="icon">
+            {{ activeIndex === i ? '−' : '+' }}
+          </div>
+        </div>
+
+        <div class="faq-answer">
+          <p>{{ faq.answer }}</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
