@@ -35,9 +35,10 @@ export class RegisterComponent {
             isAzienda: this.isAzienda,
             piva: this.piva,
         }).subscribe({
-          next: () => {
-            console.log('Registrazione OK');
-            this.router.navigate(['/login']);
+          next: (res: any) => {
+            console.log('Registrazione OK', res);
+
+            this.router.navigate(['/user', res.id]);
           },
           error: (err) => {
             console.error('Errore registrazione', err);

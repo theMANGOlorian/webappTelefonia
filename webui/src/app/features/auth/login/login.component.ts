@@ -24,7 +24,7 @@ export class LoginComponent {
     }).subscribe({
       next: (res: any) => {
         console.log('Login ok', res);
-        this.router.navigate(['/user', res.userId]);
+        this.router.navigate(['/user', res.id]);
       },
       error: () => {
         console.log('Errore login');

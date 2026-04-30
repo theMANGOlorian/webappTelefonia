@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user',
   standalone: true,
   templateUrl: './user.component.html',
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
 
-  userId: string | null = null;
+  user: any;
 
-  constructor(private route: ActivatedRoute) {
-    this.userId = this.route.snapshot.paramMap.get('id');
+  ngOnInit() {
+    const storedUser = localStorage.getItem('user');
 
-    console.log('User ID:', this.userId);
+    if (storedUser) {
+      this.user = JSON.parse(storedUser);
+      console.log('User:', this.user);
+    }
   }
 }
