@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.User;
+import com.example.demo.dto.RegisterResponse;
 
 @Repository
 public class UserRepository {
@@ -24,13 +25,17 @@ public class UserRepository {
         return count != null && count > 0;
     }
 
-
-    public void insert(User user) {
+    public RegisterResponse insert(User user) {
         String sql = """
-            INSERT INTO users ( username, email, name, surname, pwd, isAzienda, piva) VALUES (?, ?, ?, ?, crypt( ? , gen_salt('sha256crypt')), ? , ?);
+            INSERT INTO users ( username, email, name, surname, pwd, isAzienda, piva) VALUES (?, ?, ?, ?, crypt( ? , gen_salt('bf')), ? , ?) RETURNING id, username;
         """;
 
-        jdbc.update(sql,
+        return jdbc.queryForObject(sql, (rs, rowNum) -> 
+            new RegisterResponse(
+                rs.getString("id"),
+                rs.getString("username")
+            ),
+            /* valori che stop passando alla query*/
             user.username(),
             user.email(),
             user.nome(),
@@ -38,7 +43,8 @@ public class UserRepository {
             user.password(),
             user.isAzienda(),
             user.piva()
-        );
+        ); 
+ 
     }
 
 }

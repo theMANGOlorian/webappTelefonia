@@ -9,3 +9,4 @@ public record User(
     boolean isAzienda,
     String email
     ) { }
+

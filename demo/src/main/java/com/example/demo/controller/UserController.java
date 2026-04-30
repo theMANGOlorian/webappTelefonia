@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.UserService;
 import com.example.demo.model.User;
+import com.example.demo.dto.RegisterResponse;
 
 @RestController
 public class UserController {
-    
+
     private final UserService service;
 
     public UserController(UserService service) {
@@ -17,11 +18,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public User createUser(@RequestBody User user) {
-
-        service.createUser(user);
-     
-        return user; 
+    public RegisterResponse createUser(@RequestBody User user) {
+        return service.createUser(user);
     }
-
 }
