@@ -10,20 +10,15 @@ import com.example.demo.dto.RegisterResponse;
 
 @RestController
 public class UserController {
-    
+
     private final UserService service;
-    private RegisterResponse response;
 
     public UserController(UserService service) {
         this.service = service;
     }
 
     @PostMapping("/users")
-    public User createUser(@RequestBody User user) {
-
-        response = service.createUser(user);
-     
-        return response;
+    public RegisterResponse createUser(@RequestBody User user) {
+        return service.createUser(user);
     }
-
 }

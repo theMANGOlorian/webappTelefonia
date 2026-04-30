@@ -7,7 +7,7 @@ public class JwtValidator {
 
     public static Claims validateToken(String token) {
 
-        return Jwts.parserBuilder()
+        return Jwts.parser()
                 .verifyWith(JwtUtil.getKey())
                 .build()
                 .parseSignedClaims(token)
